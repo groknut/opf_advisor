@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Выбор организационно-правовой формы</h1>
+{% if error %}<p class="error">{{ error }}</p>{% endif %}
+<form method="post">
+    <label>Вид деятельности:
+        <select name="activity">
+            <option value="trade">Торговля</option>
+            <option value="services">Услуги</option>
+            <option value="production">Производство</option>
+            <option value="it">IT</option>
+            <option value="other">Другое</option>
+        </select>
+    </label>
+    <label>Масштаб бизнеса:
+        <select name="scale">
+            <option value="small">Малый</option>
+            <option value="medium">Средний</option>
+            <option value="large">Крупный</option>
+        </select>
+    </label>
+    <label>Количество учредителей:
+        <input type="number" name="founders_count" min="1" value="1" required>
+    </label>
+    <label>Потребность в привлечении инвестиций:
+        <select name="need_investments">
+            <option value="no">Нет</option>
+            <option value="yes">Да</option>
+        </select>
+    </label>
+    <label>Готовы нести неограниченную личную ответственность:
+        <select name="unlimited_liability">
+            <option value="no">Нет</option>
+            <option value="yes">Да</option>
+        </select>
+    </label>
+    <button type="submit">Получить рекомендацию</button>
+</form>
+{% endblock %}

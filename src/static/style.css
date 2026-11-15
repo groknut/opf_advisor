@@ -1,0 +1,155 @@
+/* --- Minimal Web 0 / Brutalist Style --- */
+
+:root {
+    --bg: #ffffff;
+    --text: #000000;
+    --border: #000000;
+    --muted: #666666;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* Убираем любые скругления и сглаживания */
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+
+body {
+    /* Используем системный моноширинный шрифт */
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+/* --- Навигация --- */
+nav {
+    border-bottom: 1px solid var(--border);
+    padding: 10px 20px;
+    background: var(--bg);
+}
+
+nav a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/*nav a:hover {
+    background-color: var(--text);
+    color: var(--bg);
+}*/
+
+/* --- Основной контейнер --- */
+main {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+}
+
+h1 {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    border-bottom: 1px dashed var(--border);
+    padding-bottom: 10px;
+}
+
+h2, h3 {
+    font-size: 1rem;
+    margin: 20px 0 10px;
+    text-transform: uppercase;
+}
+
+/* --- Формы --- */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    font-family: inherit;
+    font-size: 14px;
+    border: 1px solid var(--border);
+    background-color: var(--bg);
+    color: var(--text);
+    /* Возвращаем стандартные стрелки браузера для Web 0 эстетики */
+    appearance: auto;
+}
+
+input:focus, select:focus {
+    outline: 2px solid var(--border);
+    outline-offset: -1px;
+}
+
+/* --- Кнопки --- */
+button, a[href] {
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+button:hover, a[href]:hover:not(nav a) {
+    background-color: var(--text);
+    color: var(--bg);
+}
+
+/* --- Списки и результаты --- */
+p {
+    margin-bottom: 15px;
+}
+
+ul {
+    list-style: none;
+    border: 1px solid var(--border);
+    margin-bottom: 20px;
+}
+
+li {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+li span {
+    color: var(--muted);
+}
+
+/* --- Сообщения об ошибках --- */
+.error {
+    border: 1px solid var(--border);
+    padding: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    background-color: #eeeeee; /* Легкий серый для выделения */
+}

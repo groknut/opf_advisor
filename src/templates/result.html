@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Рекомендация: {{ opf.value }}</h1>
+<p>{{ reason }}</p>
+<h2>Ваши ответы</h2>
+<ul>
+    <li>Вид деятельности: {{ answers.activity.value }}</li>
+    <li>Масштаб: {{ answers.scale.value }}</li>
+    <li>Учредителей: {{ answers.founders_count }}</li>
+    <li>Нужны инвестиции: {{ "Да" if answers.need_investments else "Нет" }}</li>
+    <li>Готовность к личной ответственности: {{ "Да" if answers.unlimited_liability_ok else "Нет" }}</li>
+</ul>
+<a href="{{ url_for('main.index') }}">← Назад</a>
+{% endblock %}
