@@ -1,14 +1,82 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Рекомендация: {{ opf.value }}</h1>
-<p>{{ reason }}</p>
-<h2>Ваши ответы</h2>
-<ul>
-    <li>Вид деятельности: {{ answers.activity.value }}</li>
-    <li>Масштаб: {{ answers.scale.value }}</li>
-    <li>Учредителей: {{ answers.founders_count }}</li>
-    <li>Нужны инвестиции: {{ "Да" if answers.need_investments else "Нет" }}</li>
-    <li>Готовность к личной ответственности: {{ "Да" if answers.unlimited_liability_ok else "Нет" }}</li>
-</ul>
-<a href="{{ url_for('main.index') }}">← Назад</a>
+<h1>Рекомендация: {{ recommendation.opf.value }}</h1>
+
+<p class="lead">{{ recommendation.opf.full_name }}</p>
+
+<section>
+    <h2>Обоснование</h2>
+    <p>{{ recommendation.reason }}</p>
+</section>
+
+<section>
+    <h2>Налоговый режим</h2>
+    <p><strong>{{ recommendation.tax_regime.value }}</strong></p>
+    <p>{{ recommendation.tax_comment }}</p>
+</section>
+
+<section>
+    <h2>Уровень риска</h2>
+    <p>{{ recommendation.risk_level }}</p>
+</section>
+
+{% if recommendation.pros %}
+<section>
+    <h2>Плюсы</h2>
+    <ul>
+        {% for item in recommendation.pros %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+</section>
+{% endif %}
+
+{% if recommendation.cons %}
+<section>
+    <h2>Минусы</h2>
+    <ul>
+        {% for item in recommendation.cons %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+</section>
+{% endif %}
+
+{% if recommendation.next_steps %}
+<section>
+    <h2>Что делать дальше</h2>
+    <ul>
+        {% for item in recommendation.next_steps %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+</section>
+{% endif %}
+
+{% if recommendation.alternatives %}
+<section>
+    <h2>Альтернативы</h2>
+    <ul>
+        {% for item in recommendation.alternatives %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+</section>
+{% endif %}
+
+<section>
+    <h2>Ваши ответы</h2>
+    <ul>
+        <li>Вид деятельности: <span>{{ answers.activity.label }}</span></li>
+        <li>Масштаб: <span>{{ answers.scale.label }}</span></li>
+        <li>Учредителей: <span>{{ answers.founders_count }}</span></li>
+        <li>Нужны инвестиции: <span>{{ "Да" if answers.need_investments else "Нет" }}</span></li>
+        <li>Готовность к личной ответственности: <span>{{ "Да" if answers.unlimited_liability_ok else "Нет" }}</span></li>
+    </ul>
+</section>
+
+<div class="actions">
+    <a href="{{ url_for('main.download_pdf') }}">Скачать PDF</a>
+    <a href="{{ url_for('main.index') }}">← Новый расчёт</a>
+</div>
 {% endblock %}
